@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="tablrat">
+            <table id="table-id" class="sortable" >
+                <caption>Топ 100 студентов по рейтингу</caption>
+                <tr>
+                    <th>№</th>
+                    <th>ФИО</th>
+                    <th>Группа</th>
+                    <th>Средний балл</th>
+                    <th>Рейтинг</th>
+                </tr>
+                <tbody>
+                    {% if table_content %}
+                    {% for content in table_content %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                        {% for cont in content %}
+                            <td>{{ cont }}</td>
+                        {% endfor %}   
+                        </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>  
+        <div class="rightpanel">
+            <input class="findfield" placeholder="Поиск по группе или Фамилии">
+            <button class="buttonFind">Поиск</button>   
+        </div>
+    </div>
+<script type="text/javascript" charset="utf8" src="{% static 'src/main.js' %}"></script>
+</body>
+</html>

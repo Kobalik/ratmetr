@@ -7,3 +7,5 @@ class Student(models.Model):
     surname = models.CharField(max_length=200)
     patronymic = models.CharField(max_length=200)
     is_budget = models.BooleanField(default=False)
+    def __str__(self):
+        return self.surname
