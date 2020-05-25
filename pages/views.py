@@ -88,45 +88,33 @@ def printdoc(request):
     return render(request, 'pages/vedom.html', context)
 
 def printPDF(request):
-    import pdfcrowd
-    import sys
-
     group = request.POST['group']
     type_vedom = request.POST['typeVedom']
+    group_obj = Group.objects.get(group_name=group)
+    students_obj = Student.objects.filter(group=group_obj.id)
+    students = ()
+    for student in students_obj:
+        students += ((student.surname, student.name[0] + '.', student.patronymic[0] + '.'),)
     
     if type_vedom == 'Экзаменационная ведомость':
-        try:
-            # create the API client instance
-            client = pdfcrowd.HtmlToPdfClient('RazValik', '2179080295fed93f1c1d97f96dd72818')
-            path_to_html_file = 'D:/University/Диплом/ratmetr/templates/groups/{}.html'.format(group)
-            path_to_pdf_file = 'D:/University/Диплом/Материалы для диплома/vedom.pdf'
-
-            # run the conversion and write the result to a file
-            client.convertFileToFile(path_to_html_file, path_to_pdf_file)
-        except pdfcrowd.Error as why:
-            # report the error
-            sys.stderr.write('Pdfcrowd Error: {}\n'.format(why))
-
-            # rethrow or handle the exception
-            raise
-        return redirect('index')
+        context = {
+            'group': group,
+            'students': students,
+        }
+        return render(request, 'vedoms/ev.html', context)
     elif type_vedom == 'Контроль текущей успеваемости':
-        count_point = request.POST['countPoint']
-        try:
-            # create the API client instance
-            client = pdfcrowd.HtmlToPdfClient('RazValik', '2179080295fed93f1c1d97f96dd72818')
-            path_to_html_file = 'D:/University/Диплом/ratmetr/templates/groups/{}({}).html'.format(group, count_point)
-            path_to_pdf_file = 'D:/University/Диплом/Материалы для диплома/vedom.pdf'
+        count_point = int(request.POST['countPoint'])
+        count_td = ()
+        for c in range(0, count_point):
+            count_td += ((' ',),)
 
-            # run the conversion and write the result to a file
-            client.convertFileToFile(path_to_html_file, path_to_pdf_file)
-        except pdfcrowd.Error as why:
-            # report the error
-            sys.stderr.write('Pdfcrowd Error: {}\n'.format(why))
-
-            # rethrow or handle the exception
-            raise
-        return redirect('index')
+        context = {
+            'count_point': count_point,
+            'group':group_obj,
+            'students': students,
+            'count_td': count_td
+        }
+        return render(request, 'vedoms/ktu.html', context)
         
     
 def search(request):
