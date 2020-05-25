@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="topOnSearchStudent">
+        <h2>Результаты поиска "{{ text }}" </h2>
+    </div>
+    <div class="tableContainer">
+        <table id="table-id">
+            <tr>
+                <th>ФИО</th>
+                <th>Группа</th>
+            </tr>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td>
+                            <form action="{% url 'dashboard' %}" method="GET">
+                                <input class="snp" name="snp" type="submit" value="{{student.surname}} {{student.name}} {{student.patronymic}}">
+                            </form>
+                        </td>
+                        <td>{{student.group}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <form id='formOnAddSubjectPage' action="">
+        <div id='addSubject'>
+            <label id='inputSubject' for="inputSubject">Введите название предмета:</label>
+            <input id='inputSubject' type="text">
+            <label id='inputGroup' for="inputGroup">Группу у которой будет этот предмет:</label>
+            <input id='inputGroup' type="text" list='groupsList'>
+            <datalist id="groupsList">
+                {% for group in groups %}
+                    <option value="{{ group.group_name }}"></option>
+                {% endfor %}
+            </datalist>
+        </div>
+
+
+        <input id="addSubjectButton" type="submit" value=Добавить>
+    </form>
+{% endblock %}

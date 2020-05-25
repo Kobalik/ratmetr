@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="selectbar">
+        <h2>Выберите группу</h2>
+        <form name="groupAndSubjectForm" action="{% url 'addmarks' %}" method="GET"> {% csrf_token %}
+            <input type="hidden" name="csrfmiddlewaretoken">
+            <input id="inputGroups" name="group" type="search" onkeyup="checkParamsOnAddmarks()" list="groupslist">
+                <datalist id="groupslist">
+                    {% for group in groups %}
+                        <option value="{{ group }}"></option>
+                    {% endfor %}
+                </datalist>
+            <h2 class="second">и предмет</h2>
+            <input id="inputSubjects" name="subject" type="search" onkeyup="checkParamsOnAddmarks()" list="subjectslist">
+                <datalist id="subjectslist">
+                    {% for subject in subjects %}
+                        <option value="{{ subject }}"></option>
+                    {% endfor %}
+                </datalist>
+                <h2 class="third">Оценки за </h2>
+            <input id="inputTypeMarks" name="typeMarks" type="search" onkeyup="checkParamsOnAddmarks()" list="typeMarksList">
+                <datalist id="typeMarksList">
+                    <option value="Семестр"></option>
+                    <option value="Экзамен"></option>
+                </datalist>
+            <button id="loadbutton" class="loadbutton" type="submit" disabled>Загрузить</button>
+        </form>
+    </div>
+    
+    <form id="formSendMarks" action="{% url 'addmarks' %}" method="POST">
+        {% csrf_token %}
+        <div class="tableGroup">
+            <table id="table-id">
+                <caption>Группа {{ selected_group }}</caption>
+                <tr>
+                    <th>№</th>
+                    <th>ФИО</th>
+                    <th>Оценка</th>
+                </tr>
+                {% if selected_group != '' %}
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ student.surname }} {{ student.name }} {{ student.patronymic }}</td>
+                            <td><input type="text"></td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+        <input id="submitButton" type="submit" value="Сохранить">
+    </form>
+    
+{% endblock %}

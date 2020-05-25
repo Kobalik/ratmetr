@@ -1,0 +1,88 @@
+{% load static %}
+<div class="rightpanel">
+    {% if request.user.is_staff %}
+        <div class="logreg">
+            {% if user.is_authenticated %}
+                <h3>Привет, {{ user.username }}!</h3>
+                <a href="javascript:{document.getElementById('logout').submit();}">Выйти</a>
+                <form action="{% url 'logout' %}" id="logout" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden">
+                </form>
+            {% else %}
+            <a {% if 'register' in request.path %}
+                class="active"
+                {% endif %}
+                href="{% url 'register' %}">Регистрация</a>
+
+            <a {% if 'login' in request.path %}
+                class="active"
+                {% endif %}
+                href="{% url 'login' %}">Вход</a>
+            {% endif %}
+        </div>
+        <a href="{% url 'index' %}">
+            <div class="polessulogo" style="background-image: url({% static 'img/polessulogo.png' %});"></div>
+        </a>
+        <a href="{% url 'addsubjects' %}" id="addSubject" class="aButton">Добавить предмет</a>
+        <form action="{% url 'search' %}" method="POST">
+            {% csrf_token %}
+            <input class="findfield" id='selected_group' onkeyup="checkParamsOnSearch()" name="selected_group" placeholder="Поиск по группе" type="text" list='groupslist'>
+                <datalist id="groupslist">
+                    {% for group in groups %}
+                        <option value="{{ group }}"></option>
+                    {% endfor %}
+                </datalist>
+            <input id="submitSearch" class="aButton" type="submit" value="Поиск" disabled>
+        </form>
+        <form action="{% url 'searchStudent' %}" method="POST">
+            {% csrf_token %}
+            <input class="findStudentfield" id='selected_text' onkeyup="checkParamsOnSearchStudent()" name="selected_text" placeholder="Поиск по фамилии" type="text">
+            <input id="submitSearchStudent" class="aButton" type="submit" value="Найти" disabled>
+        </form>
+        <a href="{% url 'addmarks' %}" id="addMarks" class="aButton">Добавить оценки</a>
+        <a href="{% url 'printdoc' %}" id="printDoc" class="aButton">Распечатать ведомость</a>
+    {% else %}
+        <div class="logreg">
+            {% if user.is_authenticated %}
+                <h3>Привет, {{ user.username }}!</h3>
+                <a href="javascript:{document.getElementById('logout').submit();}">Выйти</a>
+                <form action="{% url 'logout' %}" id="logout" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden">
+                </form>
+            {% else %}
+            <a {% if 'register' in request.path %}
+                class="active"
+                {% endif %}
+                href="{% url 'register' %}">Регистрация</a>
+
+            <a {% if 'login' in request.path %}
+                class="active"
+                {% endif %}
+                href="{% url 'login' %}">Вход</a>
+            {% endif %}
+        </div>
+        <a href="{% url 'index' %}">
+            <div class="polessulogo" style="background-image: url({% static 'img/polessulogo.png' %});"></div>
+        </a>
+        <form action="{% url 'search' %}" method="POST">
+            {% csrf_token %}
+            <input class="findfield" id='selected_group' onkeyup="checkParamsOnSearch()" name="selected_group" placeholder="Поиск по группе" type="text" list='groupslist'>
+                <datalist id="groupslist">
+                    {% for group in groups %}
+                        <option value="{{ group }}"></option>
+                    {% endfor %}
+                </datalist>
+            <input id="submitSearch" class="aButton" type="submit" value="Поиск" disabled>
+        </form>
+        <form action="{% url 'searchStudent' %}" method="POST">
+            {% csrf_token %}
+            <input class="findStudentfield" id='selected_text' onkeyup="checkParamsOnSearchStudent()" name="selected_text" placeholder="Поиск по фамилии" type="text">
+            <input id="submitSearchStudent" class="aButton" type="submit" value="Найти" disabled>
+        </form>
+        <a id="addMarks" class="aButtonDisabled">Добавить оценки</a>
+        <a id="addSubject" class="aButtonDisabled">Добавить предмет</a>
+        <a id="printDoc" class="aButtonDisabled" >Распечатать ведомость</a>
+    {% endif %}
+</div>

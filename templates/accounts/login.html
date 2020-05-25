@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="centerLogin">
+        {% include 'partials/_alerts.html' %} 
+        <div class="loginText"><p>Вход</p></div>
+        <form id='formLogin' action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+            <label id="usernameLabel" for="username">Имя пользователя</label>
+            <input id="username" name="username" onkeyup="checkParamsOnLogin()" type="text">
+            <label id="passwordLabel" for="password">Пароль</label>
+            <input id="password" name="password" onkeyup="checkParamsOnLogin()" type="password">
+
+            <input id="submitLogin" type="submit" value="Вход" disabled>
+        </form>
+    </div>
+{% endblock %}

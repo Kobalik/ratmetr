@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="center">
+        {% include 'partials/_alerts.html' %}
+        <div class="registerText"><p>Регистрация</p></div>
+        <form id='formRegister' action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+            <label id="usernameLabel" for="username">Имя пользователя</label>
+            <input id="username" onkeyup="checkParamsOnRegister()"  name="username" type="text">
+            <label id="emailLabel" for="email">Email</label>
+            <input id="email" onkeyup="checkParamsOnRegister()" name='email' type="text">
+            <label id="passwordLabel" for="password">Пароль</label>
+            <input id="password" onkeyup="checkParamsOnRegister()" name="password" type="password">
+            <label id="confirmPasswordLabel" for="confirmPassword">Подтверждение пароля</label>
+            <input id="confirmPassword" onkeyup="checkParamsOnRegister()" name="password2" type="password">
+
+            <input id="submitRegister" type="submit" value="Регистрация" disabled>
+        </form>
+    </div>
+{% endblock %}

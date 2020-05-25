@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="addGroupAndStudents">
+        <form action="">
+            <div class="addgroup">
+                <label id='inputGroupName' for="inputGroupName">Название группы:</label>
+                <input id="inputGroupName" type="text">
+                <label id='inputFaculty' for="inputFaculty">Факультет:</label>
+                <input id="inputFaculty" type="text" list='facultylist'>
+                <label id='inputSpeciality' for="inputSpeciality">Специальность:</label>
+                <input id="inputSpeciality" type="text" list='specialitylist'>
+                    <datalist id='facultylist'>
+                        {% for facul in faculty %}
+                            <option value="{{ facul }}"></option>
+                        {% endfor %}
+                    </datalist>
+                    <datalist id="specialitylist">
+                        {% for special in speciality %}
+                            <option value="{{ special }}"></option>
+                        {% endfor %}
+                    </datalist>
+            </div>
+            <div class="addstudents">
+                <table id="table-id">
+                    <tr>
+                        <th>№</th>
+                        <th>ФИО</th>
+                        <th>Бюджет?</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="checkbox" checked></td>
+                    </tr>
+                </table>
+            </div>
+            <input id="addStudentsButton" type="submit" value=Добавить>
+        </form>
+    </div>
+{% endblock %}

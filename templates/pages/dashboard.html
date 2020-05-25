@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="tableOnDashboard">
+        <table id="table-id">
+            <caption id="dashboardCaption">{{student.surname}} {{student.name}} {{student.patronymic}}</caption>
+            <tr>
+                <th>Название предмета</th>
+                <th>Оценки</th>
+                <th>Экзамен</th>
+            </tr>
+            {% for content in table_content %}
+            <tr>
+                {% for cont in content %}
+                <td>{{ cont }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

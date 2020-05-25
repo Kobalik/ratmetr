@@ -3,52 +3,99 @@ html {
     height: 100%;
     font-family: sans-serif;
     margin: 0;
+    position: fixed;
 }
 
 body{
     display: block;
+    background-color: #fafafa;
 }
 
-.main {
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin: 0;
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #008558;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #005e3e; 
+  }
+
+
+  /* _alerts styles */
+
+div.container{
+    height: 35px;
+    margin-left: 20px;
+    width: 360px;
+
+    border-radius: 3px;
+
+    background-color: rgba(245, 7, 7, 0.747);
 }
 
-.rightpanel {
-    margin-top: 28px;
-    width: 38%;
-    background-color: #e8e9eb;
-    float: left;
-    height: 100%;
-    border: 4px solid #01ab73;
-    border-radius: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+div.container div {
+    position: absolute;
+    height: 25px;
+    top: 10px;
+    left: 25px;
+}
+
+div.container button {
+    position: absolute;
+    left: 330px;
+    top: 0px;
+
+    background-color: rgba(245, 7, 7, 0.151);
+    border: none;
 }
 
 
-.tablrat {
-    width: 60%;
-    display: flex;
-    float: left;
-    align-items: center;
-    justify-content: center;
+/* Top on main page */
+
+.captionTable {
+    position: fixed;
+    width: 810px;
+    padding-bottom: 5px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 32px;
+    color: rgb(53, 167, 110);
+    border-bottom: 2px solid #01AB73;
+
+    text-align: center;
 }
 
 /* Table style */
+
+.tablrat {
+    position: absolute;
+    height: 600px;
+    width: 810px;
+    top: 55px;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+    
+}
+
 #table-id {
     width: 100%;
     border-collapse: collapse;
-}
-
-#table-id caption {
-    font-size: large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: 1000;
-    color: darkgreen;
 }
 
 #table-id tr th {
@@ -68,37 +115,846 @@ body{
     background: #ebffe8;
 } 
 
-.findfield {
-    margin-top: 300px;
-    margin-bottom: 500px;
-    float: left;
-	width: 70%;
-	border-radius: 15px;
-    padding-left: 5px;
-    height: 30px;
+
+
+/* righpanek */
+
+.rightpanel {
+    position: absolute;
+    width: 550px;
+    height: 700px;
+    left: 818px;
+    top: 0px;
+
+    background: #E8E9EB;
+    border-left: 2px solid #01AB73;
 }
 
-.buttonFind {
-    margin-top: 300px;
-    margin-bottom: 500px;
-    float: left;
-    font-weight: 700;
+.rightpanel .logreg a.active {
     color: white;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    background: rgb(64,199,129);
-    box-shadow: 0 -3px rgb(53,167,110) inset;
-    transition: 0.2s;
+    box-shadow: 0px 3px white inset;
 }
 
-.buttonFind:hover { 
+.findfield {
+    position: absolute;
+    top: 220px;
+    left: 90px;
+    width: 240px;
+	border-radius: 30px;
+    justify-content: left;
+    padding-left: 10px;
+    height: 45px;
+
+    color: #000000;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.findStudentfield {
+    position: absolute;
+    top: 150px;
+    left: 90px;
+    width: 240px;
+	border-radius: 30px;
+    justify-content: left;
+    padding-left: 10px;
+    height: 45px;
+
+    color: #000000;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.aButton {
+    background: #40C781;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    height: 45px;
+    padding: 5px 15px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+.aButtonDisabled {
+    background: gray;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    height: 45px;
+    padding: 5px 15px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.aButton:hover { 
     background: rgb(53, 167, 110); 
 }
 
-.buttonFind:active {
+.aButton:active {
   background: rgb(33,147,90);
   box-shadow: 0 3px rgb(33,147,90) inset;
 }
 
+input#submitSearch {
+    position: absolute;    
+    left: 350px;
+    top: 220px;
+}
 
+input#submitSearchStudent {
+    position: absolute;    
+    left: 350px;
+    top: 150px;
+}
+
+input#submitSearch:disabled {
+    background-color: gray;
+}
+
+input#submitSearchStudent:disabled {
+    background-color: gray;
+}
+
+#addMarks {
+    position: absolute;    
+    left: 110px;
+    top: 290px;
+    width: 320px;
+    padding-left: 50px;
+}
+
+#printDoc {
+    position: absolute;    
+    left: 110px;
+    top: 430px;
+    width: 320px;
+}
+
+#addSubject {
+    position: absolute;    
+    left: 110px;
+    top: 360px;
+    width: 320px;
+    padding-left: 50px;
+}
+
+.rightpanel .polessulogo {
+    position: fixed;
+    top: 500px;
+    left: 1050px;
+    width: 80px;
+    height: 100px;
+
+    background-size: contain;
+}
+
+.rightpanel .logreg {
+    position: absolute;
+    left: 0px;
+    width: 545px;
+    height: 50px;
+
+    background-color: rgb(223, 223, 223); 
+    border-bottom: 2px solid #01AB73;;
+}
+.rightpanel .logreg a {
+    float: right;
+    margin-top: 10px;
+    padding-top: 5px;
+    margin-right: 20px;
+
+    cursor: pointer;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgb(53, 167, 110);
+}
+
+.rightpanel .logreg h3 {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgb(53, 167, 110);
+
+    position: absolute;
+    left: 5px;
+}
+
+.rightpanel .logreg a:hover {
+    color: rgb(33,147,90);
+    box-shadow: 0px 3px rgb(33,147,90) inset;
+}
+
+/* Topbar on addmarks page */
+
+.selectbar {
+    position: absolute;
+    left: 0px;
+    width: 818px;
+    height: 126px;
+
+    border-bottom: 2px solid #01AB73;;
+}
+
+.selectbar h2 {
+    margin-top: 4px;
+    margin-left: 5px;
+    padding: 0;
+    float: left;
+    
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(53, 167, 110); 
+}
+
+.selectbar .second {
+    position: absolute;
+    top: 40px;
+}
+
+.selectbar .third{
+    position: absolute;
+    top: 80px;
+}
+
+.selectbar input {
+    margin: 6px;
+    margin-top: 2px;
+    padding: 0;
+    float: left;
+    height: 28px;
+
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(53, 167, 110); 
+
+    border-radius: 3px;
+}
+
+#inputGroups {
+    position: absolute;
+    left: 180px;
+    width: 435px;
+}
+
+#inputSubjects {
+    position: absolute;
+    top: 40px;
+    left: 115px;
+    width: 500px;
+}
+
+#inputTypeMarks {
+    position: absolute;
+    top: 80px;
+    left: 115px;
+    width: 500px;
+}
+
+.loadbutton {
+    position: absolute;
+    left: 645px;
+
+    background: #40C781;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    height: 110px;   
+    width: 150px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+/* Table div on addmarks */
+#formSendMarks {
+    position: absolute;
+    top: 142px;
+    height: 535px;
+    width: 810px;
+}
+
+.tableGroup {
+    position: absolute;
+    height: 470px;
+    width: 810px;
+    overflow: scroll;
+}
+
+#formSendMarks .tableGroup caption {
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000000;
+}
+
+form#formSendMarks div.tableGroup table#table-id th:nth-child(even) {
+    width: 800px;
+}
+
+#submitButton {
+    position: absolute;
+    top: 470px;
+
+    background: #40C781;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    height: 42px;   
+    width: 785px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+
+/* AddGroups styles */
+
+#addStudentsButton {
+    position: absolute;
+    top: 610px;
+
+    background: #40C781;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    height: 42px;   
+    width: 785px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+.addgroup {
+    position: absolute;
+    
+    margin: 0px;
+    height: 80px;
+    width: 820px;
+    border-bottom: 2px solid #01AB73;
+}
+
+.addgroup label {
+    position: absolute;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000000;
+    left: 10px;
+}
+
+.addgroup input {
+    position: absolute;
+    left: 200px;
+    width: 500px;
+
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000000; 
+
+    border-radius: 3px;
+}
+
+.addgroup #inputGroupName {top: 0px;}
+.addgroup #inputFaculty {top: 25px;}
+.addgroup #inputSpeciality {top: 50px;}
+
+.addstudents {
+    position: absolute;
+    top: 95px;
+    width: 820px;
+
+    overflow: scroll;
+}
+
+.addstudents table#table-id th:nth-child(even) {
+    width: 680px;
+}
+.addstudents table#table-id td:nth-child(even) input {
+    width: 680px;
+}
+
+
+/* Addsubject style */
+
+form#formOnAddSubjectPage {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#formOnAddSubjectPage div#addSubject {
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    height: 60px;
+    width: 800px;
+    border-bottom: 2px solid #01AB73;
+}
+
+#formOnAddSubjectPage #addSubjectButton {
+    position: absolute;
+    top: 610px;
+    left: 10px;
+
+    background: #40C781;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    height: 42px;   
+    width: 785px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;    
+}
+
+#formOnAddSubjectPage label {
+    position: absolute;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000000;
+    left: 10px;
+    width: 400px;
+}
+
+#formOnAddSubjectPage input {
+    position: absolute;
+    left: 400px;
+    width: 390px;
+
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000000; 
+
+    border-radius: 3px;
+}
+
+#formOnAddSubjectPage #inputSubject {top: 0px;}
+#formOnAddSubjectPage #inputGroup {top: 25px;}
+
+
+/* Register page styles */
+
+.center {
+    position: absolute;
+    width: 400px;
+    left: 200px;
+    top: 150px;
+}
+
+.registerText {
+    position: absolute;
+    top: 40px;
+    height: 35px;
+    width: 400px;
+    background-color: #005e3e;
+    border: 1px solid black;
+
+    text-align: center;
+}
+
+.registerText p {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: -13px;
+    left: 140px;
+}
+
+#formRegister {
+    position: absolute;
+    top: 75px;
+    width: 400px;
+    height: 260px;
+
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+
+#formRegister label {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+}
+
+#formRegister label#usernameLabel {top: 5px;}
+#formRegister label#emailLabel {top: 55px;}
+#formRegister label#passwordLabel {top: 105px;}
+#formRegister label#confirmPasswordLabel {top: 155px;}
+
+#formRegister input {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    width: 380px;
+}
+
+#formRegister input#username {top: 25px;}
+#formRegister input#email {top: 75px;}
+#formRegister input#password {top: 125px;}
+#formRegister input#confirmPassword {top: 175px;}
+
+#formRegister input#submitRegister {
+    top: 215px;
+    height: 30px;
+
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+
+    background-color: #40C781;
+}
+
+
+/* Login page styles */
+
+.centerLogin {
+    position: absolute;
+    width: 400px;
+    left: 200px;
+    top: 200px;
+}
+
+.loginText {
+    position: absolute;
+    top: 40px;
+    height: 35px;
+    width: 400px;
+    background-color: #005e3e;
+    border: 1px solid black;
+
+    text-align: center;
+}
+
+.loginText p {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: -13px;
+    left: 175px;
+}
+
+#formLogin {
+    position: absolute;
+    top: 75px;
+    width: 400px;
+    height: 160px;
+
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+
+#formLogin label {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+}
+
+#formLogin input {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    width: 380px;
+}
+
+#formLogin label#usernameLabel {top: 5px;}
+#formLogin input#username {top: 25px;}
+#formLogin label#passwordLabel {top: 55px;}
+#formLogin input#password {top: 75px;}
+
+#formLogin input#submitLogin {
+    top: 115px;
+    height: 30px;
+
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+
+    background-color: #40C781;
+}
+
+
+/* vedom page styles */
+
+.centerVedom {
+    position: absolute;
+    width: 400px;
+    left: 200px;
+    top: 200px;
+}
+
+.vedomText {
+    position: absolute;
+    top: 40px;
+    height: 35px;
+    width: 400px;
+    background-color: #005e3e;
+    border: 1px solid black;
+
+    text-align: center;
+}
+
+.vedomText p {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: -13px;
+    left: 135px;
+}
+
+#groupChoice {
+    position: absolute;
+    top: 75px;
+    width: 400px;
+    height: 270px;
+
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+
+#groupChoice label#labelGroups {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    left: 135px;
+    top: 80px;
+}
+
+#groupChoice input#group {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    width: 380px;
+    top: 110px;
+}
+
+
+
+#groupChoice input#submitVedom {
+    position: absolute;
+    top: 220px;
+    height: 30px;
+    left: 10px;
+    width: 385px;
+
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+
+    background-color: #40C781;
+}
+
+#typeVedom {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    width: 380px;
+    top: 40px;
+}
+
+#labelTypeVedom {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    left: 100px;
+    top: 10px;
+}
+
+#countPoint {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    width: 380px;
+    top: 180px;
+}
+
+#labelCountPoint {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    left: 35px;
+    top: 150px;
+}
+
+
+/* Search page style */
+
+h2#h2onSearch {
+    position: absolute;
+    left: 300px;
+    top: -30px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 32px;
+    color: black;
+}
+
+div.topSearch {
+    position: fixed;
+    height: 37px;
+    width: 810px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #01AB73;
+}
+
+div.tableOnSearch {
+    position: absolute;
+    top: 80px;
+    width: 810px;
+    height: 580px;
+
+    overflow: scroll;
+}
+
+/* searchStudent page styles */
+
+.topOnSearchStudent {
+    position: fixed;
+    height: 37px;
+    width: 810px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #01AB73;
+}
+
+.topOnSearchStudent h2 {
+    position: absolute;
+    left: 50px;
+    top: -30px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 32px;
+    color: black;
+}
+
+.tableContainer {
+    position: absolute;
+    top: 80px;
+    width: 810px;
+    height: 580px;
+
+    overflow: scroll;
+}
+
+input.snp {
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    outline: none; /* Для синий ободки */
+    border: 0;
+    background: transparent;
+}
+
+input.snp:hover{
+    color: green;
+    border: 1px solid black;
+}
+
+
+/* Dashboard page styles */
+
+.tableOnDashboard {
+    width: 810px;
+    height: 650px;
+}
+
+#dashboardCaption {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+}

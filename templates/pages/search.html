@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="captionTable">Топ 100 студентов по рейтингу</div>
-    <div class="tablrat">
-        <table id="table-id" class="sortable" >
+    <div class="topSearch">
+        <h2 id='h2onSearch'>Группа {{ selected_group }}</h2>
+    </div>
+    <div class="tableOnSearch">
+        <table id="table-id">
             <tr>
                 <th>№</th>
                 <th>ФИО</th>
@@ -24,5 +26,5 @@
                 {% endif %}
             </tbody>
         </table>
-    </div>  
+    </div>
 {% endblock %}

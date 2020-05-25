@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="centerVedom">
+        {% include 'partials/_alerts.html' %} 
+        <div class="vedomText"><p>Выбор группы</p></div>
+        <form id='groupChoice' action="{% url 'printPDF' %}" method="POST">
+        {% csrf_token %}
+            <label id="labelTypeVedom" for="typeVedom">Выберите тип ведомости:</label>
+            <input id="typeVedom" name="typeVedom" type="text" list="vedomList" onkeyup="checkParamsOnVedom()">
+            <datalist id="vedomList">
+                <option value="Контроль текущей успеваемости"></option>
+                <option value="Экзаменационная ведомость"></option>
+            </datalist>
+
+            <label id="labelGroups" for="group">Выберите группу:</label>
+            <input id="group" name="group" type="text" onkeyup="checkParamsOnVedom()" list="groupslist">
+            <datalist id="groupslist">
+                {% for group in groups %}
+                    <option value="{{ group }}"></option>
+                {% endfor %}
+            </datalist>
+
+            <label id="labelCountPoint" style="visibility: hidden;">Выберите количество контрольных точек:</label>
+            <input id="countPoint" name="countPoint" type="number" onkeyup="checkParamsOnVedom()" style="visibility: hidden;">
+
+            <input id="submitVedom" type="submit" value="Загрузить ведомость" disabled>
+        </form>
+    </div>
+{% endblock %}
